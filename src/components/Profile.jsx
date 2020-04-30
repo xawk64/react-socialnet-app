@@ -4,7 +4,7 @@ import './Profile.scss'
 function Profile() {
     return (
         <content className="content">
-        <img src="https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg"></img>
+        <img src="https://imgcomfort.com/Userfiles/Upload/images/illustration-geiranger.jpg"></img>
         <div className="person">
           <img src="https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png"></img>
           <div className="person-info">
