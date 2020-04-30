@@ -1,0 +1,60 @@
+.content {
+    grid-area: c;
+    background-color: khaki;
+    
+    img {
+      width: 100%;
+    }
+
+    .person  {
+        
+        img {width: 100px;
+        margin-left: 50px;
+        }
+
+      }
+      
+      .person-info {
+        display: inline-block;
+        width: 200px;
+        margin-left: 40px;
+      }
+      
+      .my-posts {
+        p {
+        border: 1px solid grey;
+        border-radius: 10px;
+        margin: 20px;
+        }
+      
+        h2 {
+        margin-left: 20px;
+      }
+    }
+      
+      .new-posts {
+         textarea {
+        width: 60%;
+        height: 150px;
+        margin-left: 20px;
+        background-color: khaki;
+        border: 2px solid white;
+        box-shadow: 5px 5px 5px grey;
+      }
+      
+      h2 {
+        margin-left: 20px;
+      }
+      
+      button {
+        margin-left: 50%;
+        margin-top: 20px;
+        border: 2px solid white;
+        box-shadow: 5px 5px 5px grey;
+        width: 100px;
+        height: 50px;
+        background-color: khaki;
+      }
+}
+
+}

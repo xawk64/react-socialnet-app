@@ -1,0 +1,9 @@
+.nav {
+    grid-area: n;
+    background-color: thistle;
+    color: white;
+    
+    & ul {
+      list-style: none;
+    }
+}

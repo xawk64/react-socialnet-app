@@ -1,0 +1,16 @@
+.header {
+    grid-area: h;
+    background-color: indianred;
+    color: white;
+    box-shadow: 5px 5px 5px grey;
+    
+    & img {
+      width: 50px;
+      height: 5W0px;
+    }
+    
+    & h2 {
+      margin-left: 300px;
+      display: inline;
+    }
+}
