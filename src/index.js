@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
+import {methods, data, subscribe} from './state'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
+function rerenderVirtualDom (data, methods) {
+    ReactDOM.render(
+      <React.StrictMode>
+        <App data={data} methods={methods}/>
+      </React.StrictMode>,
+      document.getElementById("root")
+    );
+}
+  
+subscribe(rerenderVirtualDom);
+
+rerenderVirtualDom(data, methods)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

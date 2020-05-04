@@ -1,16 +1,18 @@
 .header {
     grid-area: h;
-    background-color: indianred;
+    background-color: khaki;
     color: white;
     box-shadow: 5px 5px 5px grey;
-    
+    display: inline-flex;
+    align-items: center;
+
     & img {
       width: 50px;
-      height: 5W0px;
+      margin-left: 20px;
     }
     
     & h2 {
-      margin-left: 300px;
+      margin-left: 35%;
       display: inline;
     }
 }

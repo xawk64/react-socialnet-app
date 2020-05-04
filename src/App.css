@@ -1,3 +1,4 @@
+
 * {
   font-family: 'Roboto', sans-serif;
 }
@@ -8,9 +9,12 @@
   display: grid;
   grid-template-areas:
   "h h"
-  "n c"
-  "f f";
+  "n c";
   grid-template-columns: 20% 80%;
   grid-template-rows: auto auto auto;
   grid-gap: 20px;
+}
+
+.app-wrapper-content {
+    grid-area: c;
 }
