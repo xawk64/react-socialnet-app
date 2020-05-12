@@ -1,15 +1,10 @@
 import React from 'react'
 import s from './DialogsItem.module.scss'
-import { NavLink } from 'react-router-dom'
-import { selectDialogActionCreater } from '../../../../redux/dialogs-reducer'
-
-
 
 function DialogsItem(props) {
+
   const selectDialog = () => {
-    let id = props.id
-    let action = selectDialogActionCreater (id)
-    props.dispatch(action)
+    props.selectDialog(props.id)
   }
 
   return (  

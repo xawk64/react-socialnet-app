@@ -9,7 +9,7 @@ import store from './redux/redux_store'
 function rerenderVirtualDom () {
     ReactDOM.render(
       <React.StrictMode>
-        <App data={store.getState()} dispatch={store.dispatch.bind(store)}/>
+        <App data={store.getState()} dispatch={store.dispatch.bind(store)} store={store}/>
       </React.StrictMode>,
       document.getElementById("root")
     );

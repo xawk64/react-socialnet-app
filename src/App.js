@@ -13,11 +13,10 @@ function App(props) {
       <Header />
       <Nav />
       <div className="app-wrapper-content">
-        <Route path="/profile" render={ () => <Profile
-        profilePage={props.data.profilePage} dispatch={props.dispatch}
-        />}/>
+        <Route path="/profile" render={ () => <Profile store={props.store}/>}/>
         <Route path="/dialogs" render={ () => <Dialogs dialogsPage={props.data.dialogsPage} 
-        dispatch={props.dispatch}
+        dispatch={props.dispatch} 
+        store={props.store}
         />}/>
         <Route path="/news" component={Dialogs}/>
         <Route path="/music" component={Dialogs}/>

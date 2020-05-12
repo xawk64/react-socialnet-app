@@ -1,18 +1,17 @@
 import React from 'react'
 import s from './NewMessage.module.scss'
-import { updateNewMessageActionCreater, sendMessageActionCreater } from '../../../../redux/dialogs-reducer'
+
 
 function NewMessage(props) {
+
 let newMessage = React.createRef()
   const sendMessage = () => {
-    let action = sendMessageActionCreater()
-    props.dispatch(action)
+    props.sendMessage()
   }
 
-  const newMessageOnChange = (e) => {
+  const newMessageOnChange = () => {
     let newMess = newMessage.current.value
-    let action = updateNewMessageActionCreater(newMess)
-    props.dispatch(action)
+    props.updateNewMessageText(newMess)
   }
 
   return (

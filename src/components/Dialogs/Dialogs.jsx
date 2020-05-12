@@ -1,18 +1,13 @@
 import React from 'react'
 import s from './Dialogs.module.scss'
-import DialogsArea from './DialogsArea/DialogsArea'
-import Messages from './Messages/Messages'
+import DialogsAreaContainer from './DialogsArea/DialogsAreaContainer'
+import MessagesContainer from './Messages/MessagesContainer'
 
 function Dialogs(props) {
   return (
     <content className={s.dialogs}>
-      <DialogsArea dialogsObject={props.dialogsPage.dialogsObject}
-      dispatch={props.dispatch}
-      />
-      <Messages messagesObject={props.dialogsPage.messagesObject} 
-      dialogsObject={props.dialogsPage.dialogsObject} 
-      dispatch={props.dispatch}
-      />
+      <DialogsAreaContainer store={props.store}/>
+      <MessagesContainer store={props.store} />
     </content>
   );
 }
