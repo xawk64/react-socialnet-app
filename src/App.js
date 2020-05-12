@@ -14,9 +14,11 @@ function App(props) {
       <Nav />
       <div className="app-wrapper-content">
         <Route path="/profile" render={ () => <Profile
-        profilePage={props.data.profilePage} methods={props.methods.profilePage}
+        profilePage={props.data.profilePage} dispatch={props.dispatch}
         />}/>
-        <Route path="/dialogs" render={ () => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+        <Route path="/dialogs" render={ () => <Dialogs dialogsPage={props.data.dialogsPage} 
+        dispatch={props.dispatch}
+        />}/>
         <Route path="/news" component={Dialogs}/>
         <Route path="/music" component={Dialogs}/>
         <Route path="/settings" component={Dialogs}/>

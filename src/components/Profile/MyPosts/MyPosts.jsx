@@ -9,8 +9,7 @@ function MyPosts(props) {
   return (
     <div className={s.MyPosts}>
     <NewPost newPostText={props.newPostText} 
-    updateNewPostText={props.updateNewPostText}
-    addPost={props.addPost} 
+    dispatch={props.dispatch}
     />
     <h2>My posts</h2>
     {postsElements}

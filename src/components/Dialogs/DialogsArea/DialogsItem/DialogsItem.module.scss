@@ -1,19 +1,14 @@
 .dialogsItem {
+
     text-decoration: none;
-
-    :hover {
-        background-color: cadetblue;
-    }
-
-    li {
-        font-size: 20px;
-        border: 1px solid grey;
-        border-radius: 5px;
-        width: 200px;
-        height: 50px;
-        margin: 10px;
-        display: flex;
-        align-items: center;
+    font-size: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
 
         img {
             width: 50px;
@@ -29,5 +24,9 @@
             color: black;
             margin: 10px;
         }
+
+    &:hover {
+        background-color: cadetblue;
+        cursor: pointer;
     }
 }

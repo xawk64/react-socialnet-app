@@ -11,8 +11,7 @@ function Profile(props) {
       <AboutMe />
       <MyPosts posts={props.profilePage.posts} 
       newPostText={props.profilePage.newPostText}
-      updateNewPostText={props.methods.updateNewPostText}
-      addPost={props.methods.addPost} 
+      dispatch={props.dispatch}
       />
     </content>
   );

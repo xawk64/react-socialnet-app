@@ -6,8 +6,13 @@ import Messages from './Messages/Messages'
 function Dialogs(props) {
   return (
     <content className={s.dialogs}>
-      <DialogsArea dialogs={props.dialogsPage.dialogs}/>
-      <Messages messages={props.dialogsPage.messages}/>
+      <DialogsArea dialogsObject={props.dialogsPage.dialogsObject}
+      dispatch={props.dispatch}
+      />
+      <Messages messagesObject={props.dialogsPage.messagesObject} 
+      dialogsObject={props.dialogsPage.dialogsObject} 
+      dispatch={props.dispatch}
+      />
     </content>
   );
 }

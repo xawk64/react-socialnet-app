@@ -1,17 +1,20 @@
 import React from 'react'
 import s from './NewPost.module.scss'
+import { updateNewPostActionCreater, addPostActionCreater } from '../../../../store';
 
 function NewPost(props) {
   let newPost = React.createRef()
 
   function newPostOnChange() {
-    let newPostText = newPost.current.value;
-    props.updateNewPostText (newPostText)
+    let newPostText = newPost.current.value
+    let action = updateNewPostActionCreater(newPostText)
+    props.dispatch(action)
   }
 
   function addPost() {
-    let newPostText = newPost.current.value;
-    props.addPost(newPostText)
+    let action = addPostActionCreater()
+    props.dispatch(action)
+    debugger
   }
 
   return (
@@ -23,5 +26,6 @@ function NewPost(props) {
     </div>
   );
 }
+
 
 export default NewPost
