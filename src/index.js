@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import store from './store'
+import store from './redux/store'
 
 
-function rerenderVirtualDom (data) {
+function rerenderVirtualDom () {
     ReactDOM.render(
       <React.StrictMode>
-        <App data={data} dispatch={store.dispatch.bind(store)}/>
+        <App data={store.getState()} dispatch={store.dispatch.bind(store)}/>
       </React.StrictMode>,
       document.getElementById("root")
     );

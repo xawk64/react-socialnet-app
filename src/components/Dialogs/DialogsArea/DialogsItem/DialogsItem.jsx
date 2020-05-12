@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './DialogsItem.module.scss'
 import { NavLink } from 'react-router-dom'
-import { selectDialogActionCreater } from '../../../../store'
+import { selectDialogActionCreater } from '../../../../redux/dialogs-reducer'
 
 
 

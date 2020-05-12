@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './NewMessage.module.scss'
-import { updateNewMessageActionCreater, sendMessageActionCreater } from '../../../../store'
+import { updateNewMessageActionCreater, sendMessageActionCreater } from '../../../../redux/dialogs-reducer'
 
 function NewMessage(props) {
 let newMessage = React.createRef()
