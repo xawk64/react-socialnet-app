@@ -1,0 +1,41 @@
+
+.UserCard {
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    img{
+        width: 100px;
+        height: 100px;
+    }
+
+    button {
+        display: block;
+    }
+
+    h3 {
+        font-size: 15px;
+        color: grey;
+    }
+}
+
+.paginator {
+    display: flex;
+    justify-content: space-around;
+
+    .activePage {
+        font-weight: bold;
+    }
+
+    span {
+        font-size: 15px;
+    }
+
+    span:hover {
+        cursor: pointer;
+    }
+    
+}

@@ -1,30 +1,53 @@
 import React from 'react'
 import Post from './Post/Post'
-import MyPosts from './MyPosts'
-import { updateNewPostActionCreater, addPostActionCreater } from '../../../redux/profile-reducer';
+import NewPost from './NewPost/NewPost'
+import { setPostThunk, getPostsThunk, putLikeThunk } from '../../../redux/posts-reducer';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import s from './MyPosts.module.scss'
 
-function MyPostsContainer (props) {
-  
-  let state = props.store.getState()
-  let postsElements = state.profilePage.posts.map( post => (<Post text={post.text} likes={post.likes}/>))
 
-  function newPostOnChange(newPostText) {
-    let action = updateNewPostActionCreater(newPostText)
-    props.store.dispatch(action)
+class MyPostsContainer extends React.Component {
+  componentDidMount() {
+    this.userId = this.props.userProfileId
+    if (!this.userId) {
+      this.userId = this.props.myProfileId
+    }
+    this.props.getPostsThunk(this.userId)
   }
 
-  function addPost() {
-    let action = addPostActionCreater()
-    props.store.dispatch(action)
+  addPost = (data) => {
+    this.props.setPostThunk(data.newPost)
   }
 
-  return (
-  <MyPosts newPostText={state.profilePage.newPostText} 
-  updateNewPost={newPostOnChange} 
-  addPost={addPost} 
-  postsElements={postsElements}
-  />
-  );
+  putLike = (likeId) => {
+    this.props.putLikeThunk(this.userId, likeId)
+  }
+
+  render() {
+    return <div className={s.myPosts}>
+      {!this.props.userProfileId ? <NewPost addPost={this.addPost}/>  : null }
+    
+    <h2>{this.props.postAuthor} posts</h2>
+    {this.props.posts.map( (post, i) => 
+  (<Post text={post.text} likes={post.likesCount} 
+  id={post._id} key={post._id} putLike={this.putLike} />))}
+    </div>
+  }
 }
 
-export default MyPostsContainer
+let MapStateToProps = (state) => {
+return {
+  myProfileId: state.auth.profileId,
+  userProfileId: state.profilePage.profileId,
+  postAuthor: state.profilePage.profile && state.profilePage.profile.public.fullname,
+  posts: state.posts.posts
+}
+}
+
+export default compose (
+  connect(MapStateToProps, {setPostThunk, getPostsThunk, putLikeThunk}),
+  withRouter
+  )
+ (MyPostsContainer)

@@ -1,4 +1,12 @@
 .NewMessage {
+  * {
+    display: block
+  }
+
+  span {
+    margin-left: 20px;
+  }
+
     textarea {
    width: 60%;
    height: 150px;

@@ -1,5 +1,4 @@
 import React from 'react'
-import s from './MessagesItem.module.scss'
 
 function MessagesItem(props) {
   return (

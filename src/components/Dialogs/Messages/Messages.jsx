@@ -1,8 +1,24 @@
 import React from 'react'
 import s from './Messages.module.scss'
 import NewMessage from './NewMessage/NewMessage'
+import { useEffect } from 'react'
+import { subscribeToMessages, setSocketId, removeSocketListeners } from '../../../api/api'
 
 function Messages(props) {
+    
+    useEffect( () => {
+        
+        subscribeToMessages(( {message, authorId, authorName, date} ) => {
+            props.setMessageSocket(message, authorId, authorName, date)
+        })
+        return () => {
+            removeSocketListeners()
+        } 
+    }, [])
+
+    useEffect( () => {
+        setSocketId(props.myProfileId)
+    }, props.myProfileId)
 
     return (
         <div className={s.messages}>
@@ -10,11 +26,8 @@ function Messages(props) {
             {props.messagesElements}
         </ul>
         <br></br>
-        <NewMessage author={props.author} 
-        newMessageText={props.newMessageText}
-        dispatch={props.dispatch}
+        <NewMessage selectedUser={props.selectedUser} 
         sendMessage={props.sendMessage}
-        updateNewMessageText={props.updateNewMessageText}
         />
         </div>
     )

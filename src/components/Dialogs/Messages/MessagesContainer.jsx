@@ -1,34 +1,39 @@
 import React from 'react'
-import MessagesItem from './MessagesItem/MessagesItem'
-import NewMessage from './NewMessage/NewMessage'
 import Messages from './Messages'
-import { updateNewMessageActionCreater, sendMessageActionCreater } from '../../../redux/dialogs-reducer'
+import { connect } from 'react-redux'
+import { getChatsThunk, setMessageThunk, setMessageSocket } from '../../../redux/dialogs-reducer'
+import { sendMessageSocket, setSocketId } from '../../../api/api'
+import { getMessagesElements } from '../../../redux/dialogs-selectors'
 
-function MessagesContainer(props) {
+class MessagesContainer extends React.Component {
 
-  const sendMessage = () => {
-    let action = sendMessageActionCreater()
-    props.store.dispatch(action)
+  sendMessage = (data) => {
+    this.props.setMessageThunk(data.messageText, this.props.selectedUserProfileId)
+    sendMessageSocket(this.props.myProfileId, this.props.myName, this.props.selectedUserProfileId, data.messageText)
   }
 
-  const newMessageOnChange = (newMess) => {
-    let action = updateNewMessageActionCreater(newMess)
-    props.store.dispatch(action)
+  componentDidMount() {
+    this.props.getChatsThunk ()
   }
 
-    let state = props.store.getState().dialogsPage
-    let messagesElements = state.messagesObject.messages[state.dialogsObject.currentDialog]
-    .map( m => (<MessagesItem mess={m.mess} author={m.author} />))
-
-    return (
-        <Messages messagesElements={messagesElements} 
-        author={state.dialogsObject.dialogs[state.dialogsObject.currentDialog].name} 
-        newMessageText={state.messagesObject.newMessageText}
-        dispatch={props.dispatch} 
-        sendMessage={sendMessage}
-        updateNewMessageText={newMessageOnChange}
-        />
-    )
+  render() {
+    return <Messages {...this.props} sendMessage={this.sendMessage}/>
+  }
 }
 
-export default MessagesContainer
+let MapStateToProps = (state) => {
+  if (state.dialogsPage.chats) {
+  return {
+    messagesElements: getMessagesElements(state),
+    selectedUser: state.dialogsPage.usersFullnames[state.dialogsPage.currentChat],
+    selectedUserProfileId: state.dialogsPage.usersProfileId[state.dialogsPage.currentChat],
+    myProfileId: state.auth.profileId,
+    myName: state.auth.username
+  }
+}
+  return {
+  myProfileId: state.auth.profileId
+  }
+}
+
+export default connect(MapStateToProps, {setMessageThunk, getChatsThunk, setMessageSocket})(MessagesContainer)

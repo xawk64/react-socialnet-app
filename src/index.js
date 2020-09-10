@@ -4,20 +4,23 @@ import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/redux_store'
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
+Window.store = store
 
-function rerenderVirtualDom () {
     ReactDOM.render(
+      <Provider store={store}>
       <React.StrictMode>
-        <App data={store.getState()} dispatch={store.dispatch.bind(store)} store={store}/>
-      </React.StrictMode>,
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+      </React.StrictMode>
+      </Provider>
+      ,
       document.getElementById("root")
-    );
-}
+    )
   
-store.subscribe(rerenderVirtualDom)
-
-rerenderVirtualDom ()
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

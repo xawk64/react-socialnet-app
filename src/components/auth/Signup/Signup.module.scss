@@ -1,0 +1,21 @@
+.signupContainer {
+    display: flex;
+    justify-content: center;
+    * {
+        display: block
+    }
+    .serverError {
+        color: red;
+        animation: changeColor 1s ease infinite;
+    }
+
+    @keyframes changeColor {
+        0% {
+            color: red;
+        }
+
+        50% {
+            color: blue;
+        }
+    }
+}

@@ -1,15 +1,13 @@
 import React from 'react'
-import s from './Profile.module.scss'
-import AboutMe from './AboutMe/AboutMe';
-import ProfileImg from './ProfileImg/ProfileImg';
+import About from './About/About';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import Preloader from '../Global/preloader/Preloader';
 
 function Profile(props) {
-  return (
+  return ( (props.isFetched) ? <Preloader/> :
     <content>
-      <ProfileImg />
-      <AboutMe />
-      <MyPostsContainer store={props.store} />
+      <About {...props}/>
+      <MyPostsContainer />
     </content>
   );
 }

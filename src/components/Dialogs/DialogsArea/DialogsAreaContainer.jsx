@@ -1,22 +1,25 @@
 import React from 'react'
-import DialogsItem from './DialogsItem/DialogsItem'
 import DialogsArea from './DialogsArea'
-import { selectDialogActionCreater } from '../../../redux/dialogs-reducer'
+import { selectChatThunk } from '../../../redux/dialogs-reducer'
+import { connect } from 'react-redux'
 
-function DialogsAreaContainer(props) {
 
-  const selectDialog = (id) => {
-    let action = selectDialogActionCreater (id)
-    props.store.dispatch(action)
+
+class DialogsAreaContainer extends React.Component {
+  selectChat = (id) => {
+    this.props.selectChatThunk(id)
   }
 
-  let state = props.store.getState().dialogsPage
-  let dialogsElements = state.dialogsObject.dialogs
-  .map( d => (<DialogsItem name={d.name} id={d.id} selectDialog={selectDialog}/>))
-
-  return (
-    <DialogsArea dialogsElements={dialogsElements}/>
-  )
+  render() {
+    debugger
+  return <DialogsArea {...this.props} selectChat={this.selectChat} />
+  }
 }
 
-export default DialogsAreaContainer
+let MapStateToProps = (state) => {
+  return {
+    dialogs: state.dialogsPage.usersFullnames
+  }
+}
+
+export default connect(MapStateToProps, {selectChatThunk}) (DialogsAreaContainer)

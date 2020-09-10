@@ -5,14 +5,19 @@
     box-shadow: 5px 5px 5px grey;
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
 
     & img {
       width: 50px;
-      margin-left: 20px;
     }
-    
-    & h2 {
-      margin-left: 35%;
-      display: inline;
+
+      a {
+        margin-left: 10px;
+        color: white;
+        text-decoration: none;
+      }
+
+    .loginBlock:hover {
+      cursor: pointer;
     }
 }

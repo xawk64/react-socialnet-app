@@ -5,7 +5,7 @@ function Post(props) {
   return (
         <div className={ s.post }>
           <div>
-            <img src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg"></img>
+            <img src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg" onClick={() => props.putLike(props.id)}></img>
             <h3>{ props.likes }</h3>
           </div>
           <p>
