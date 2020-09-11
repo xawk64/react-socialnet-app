@@ -8,14 +8,14 @@ const maxLength10 = maxLengthCreator(10)
 const maxLength15 = maxLengthCreator(15)
 const minLength4 = minLengthCreator(4)
 const Input = wErrValidationComponent("input")
-
+// @xawk64 look at task #1
 const LoginForm = (props) => {
-    
+
     return (
         <form onSubmit={props.handleSubmit}>
         <Field placeholder={"username"} name={"username"} component={Input} validate={[minLength4, maxLength15]}/>
         <Field placeholder={"password"} name={"password"} component={Input} validate={[minLength4, maxLength10]}/>
-        <button>Login</button>
+        <button>LogIN</button>
     <div><span className={s.serverError}>{props.error}</span></div>
         </form>   
     )
